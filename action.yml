@@ -1,15 +1,26 @@
-name: "Kubectl tool installer"
-description: "Install a specific version of kubectl binary. Acceptable values are latest or any semantic version string like 1.15.0"
+name: "Helm, Kubectl or Devspace verison change"
+description: "Install a specific version of Helm, Kubectl or Devspace. Acceptable values are latest or version strings like 1.15.0"
 inputs:
-  version:
-    description: "Version of kubectl"
+  kubevers:
+    description: "Version of Kubectl"
     required: true
     default: "latest"
-outputs:
-  kubectl-path:
-    description: "Path to the cached kubectl binary"
-branding:
-  color: "blue"
+  helmvers:
+    description: "Version of Helm"
+    required: true
+    default: "latest"
+  devspacevers:
+    description: "Version of Devspace"
+    required: true
+    default: "latest"
 runs:
-  using: "node12"
-  main: "lib/index.js"
+  using: "composite"
+  steps:
+    - name: "Changing Kubectl version"
+      uses: azure/setup-kubectl@v1
+      with:
+        version: ${{ inputs.kubevers }}
+    - name: "Changing Helm version"
+      uses: azure/setup-helm@v1
+      with:
+        version: ${{ inputs.helmvers }}

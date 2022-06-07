@@ -40,10 +40,11 @@ jobs:
       - name: Validate kubectl setup
         run: python test/validate-kubectl.py latest
 
-      - name: Setup kubectl
-        uses: ./
-        with: 
-          version: 'v1.15.1'
+      - name: Installing kubectl version
+        uses: ./ 
+        with:
+          version: ''
+
 
       - name: Validate kubectl setup
         run: python test/validate-kubectl.py 'v1.15.1' 

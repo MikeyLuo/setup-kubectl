@@ -1,0 +1,14 @@
+name: Testing
+
+on: 
+  pull_request:
+    branches:
+    - main
+jobs:
+  Kubectl-install:
+    runs-on: ubuntu-latest
+    steps: 
+    - name: Installing Kubectl version 
+      uses: ./.github/actions/version-control
+      with:
+        kubevers: ''
