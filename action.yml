@@ -5,11 +5,10 @@ inputs:
     description: "Version of kubectl"
     required: true
     default: "latest"
-outputs:
-  kubectl-path:
-    description: "Path to the cached kubectl binary"
-branding:
-  color: "blue"
 runs:
-  using: "node12"
-  main: "lib/index.js"
+  using: "composite"
+  steps:
+    - name: "Changing kubectl version"
+      uses: azure/setup-kubectl@v1
+      with:
+        version: ${{ inputs.version }}
