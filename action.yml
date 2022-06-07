@@ -16,9 +16,6 @@ inputs:
 runs:
   using: "composite"
   steps:
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
     - name: "Changing Kubectl version"
       uses: azure/setup-kubectl@v1
       with:
@@ -27,13 +24,3 @@ runs:
       uses: azure/setup-helm@v1
       with:
         version: ${{ inputs.helmvers }}
-=======
->>>>>>> Stashed changes
-    - name: "Changing kubectl version"
-      uses: azure/setup-kubectl@v1
-      with:
-        version: ${{ inputs.version }}
-<<<<<<< Updated upstream
-=======
->>>>>>> 7c0e0c07ac6a08e3e2688d61c33d49940a467799
->>>>>>> Stashed changes
